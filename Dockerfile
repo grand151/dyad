@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-gcloud
+FROM frolvlad/alpine-gcloud:2024-08-23
 
 # Instalacja podstawowych pakietów i środowiska graficznego
 RUN apk update && apk add --no-cache \
