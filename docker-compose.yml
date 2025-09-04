@@ -4,7 +4,7 @@ services:
     container_name: alpine-desktop-vnc
     ports:
       - "6080:6080"  # noVNC web interface
-      - "5901:5901"  # VNC direct access
+      - "5900:5900"  # VNC direct access
     volumes:
       - ./shared:/shared
     environment:
