@@ -1,4 +1,4 @@
-FROM alpine/node
+FROM alpine/node:latest
 
 # Instalacja podstawowych pakietów i środowiska graficznego
 RUN apk update && apk add --no-cache \
