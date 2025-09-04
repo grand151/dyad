@@ -16,8 +16,8 @@ RUN apk update && apk add --no-cache \
     python3 \
     py3-pip \
     supervisor \
-    x11-utils \
-    procps \
+    xrandr \
+    procps-ng \
     build-base \
     && rm -rf /var/cache/apk/*
 
@@ -26,6 +26,12 @@ RUN wget -qO- https://github.com/novnc/noVNC/archive/v1.4.0.tar.gz | tar xz -C /
     && mv /opt/noVNC-1.4.0 /opt/noVNC \
     && wget -qO- https://github.com/novnc/websockify/archive/v0.10.0.tar.gz | tar xz -C /opt/ \
     && mv /opt/websockify-0.10.0 /opt/websockify
+
+# Kopiuj custom CSS dla noVNC
+COPY novnc-custom.css /opt/noVNC/app/styles/custom.css
+
+# Dodaj custom CSS do HTML noVNC
+RUN sed -i 's|</head>|<link rel="stylesheet" type="text/css" href="app/styles/custom.css">\n</head>|' /opt/noVNC/vnc.html
 
 # Konfiguracja VNC
 RUN mkdir -p /root/.vnc
