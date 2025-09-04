@@ -12,7 +12,7 @@
 
 **Ports:**
 - 6080 - noVNC Web Interface (HTTP)
-- 5901 - VNC Direct Access (TCP)
+- 5900 - VNC Direct Access (TCP)
 
 **Environment Variables:**
 ```
@@ -46,7 +46,7 @@ Katalog `/shared` zawiera dane użytkownika - ustaw backup dla tego volume.
 ## Dostęp po wdrożeniu:
 
 1. **Web Interface:** `https://your-domain.com`
-2. **VNC Client:** `your-domain.com:5901`
+2. **VNC Client:** `your-domain.com:5900`
 3. **Hasło:** `password` (domyślnie - ZMIEŃ!)
 
 ## Testowanie:

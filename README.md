@@ -20,7 +20,7 @@ Ten projekt tworzy kontener Docker z Alpine Linux, środowiskiem graficznym XFCE
 
 ### 2. Konfiguracja portów:
 - Port 6080 - noVNC (dostęp przez przeglądarkę)
-- Port 5901 - VNC bezpośredni dostęp
+- Port 5900 - VNC bezpośredni dostęp
 
 ### 3. Zmienne środowiskowe (opcjonalne):
 ```
@@ -43,7 +43,7 @@ docker build -t alpine-desktop .
 docker run -d \
   --name alpine-desktop-vnc \
   -p 6080:6080 \
-  -p 5901:5901 \
+  -p 5900:5900 \
   -v $(pwd)/shared:/shared \
   alpine-desktop
 ```
@@ -56,7 +56,7 @@ docker run -d \
 - Hasło VNC: `password`
 
 ### Przez klienta VNC:
-- Adres: localhost:5901 (lub IP VPS:5901)
+- Adres: localhost:5900 (lub IP VPS:5900)
 - Hasło: `password`
 
 ## dyad:
