@@ -16,6 +16,9 @@ RUN apk update && apk add --no-cache \
     python3 \
     py3-pip \
     supervisor \
+    x11-utils \
+    procps \
+    build-base \
     && rm -rf /var/cache/apk/*
 
 # Instalacja noVNC
@@ -37,7 +40,12 @@ RUN chmod +x /start.sh
 # Instalacja dyad
 RUN git clone https://github.com/dyad-sh/dyad.git /opt/dyad \
     && cd /opt/dyad \
-    && npm install
+    && npm install \
+    && npm run build
+
+# Skrypt dla automatycznego uruchamiania dyad
+COPY start-dyad.sh /opt/start-dyad.sh
+RUN chmod +x /opt/start-dyad.sh
 
 # Konfiguracja środowiska
 ENV DISPLAY=:1

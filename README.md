@@ -8,7 +8,7 @@ Ten projekt tworzy kontener Docker z Alpine Linux, środowiskiem graficznym XFCE
 - Środowisko graficzne XFCE4
 - noVNC dla dostępu przez przeglądarkę
 - Firefox
-- dyad (https://github.com/dyad-sh/dyad)
+- **dyad (https://github.com/dyad-sh/dyad) - uruchamia się automatycznie!**
 - Podstawowe narzędzia deweloperskie
 
 ## Deployment na EasyPanel:
@@ -61,8 +61,14 @@ docker run -d \
 
 ## dyad:
 
-dyad jest zainstalowany w `/opt/dyad`. Możesz go uruchomić z terminala w środowisku graficznym:
+dyad uruchamia się **automatycznie** wraz z kontenerem i jest dostępny w Firefox!
 
+**Automatyczne uruchomienie:**
+- dyad startuje w tle na porcie 8000
+- Firefox automatycznie otwiera http://localhost:8000
+- Możesz natychmiast zacząć budować aplikacje!
+
+**Ręczne uruchomienie** (jeśli potrzebne):
 ```bash
 cd /opt/dyad
 npm start

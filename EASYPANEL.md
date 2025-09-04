@@ -56,4 +56,5 @@ Po wdrożeniu:
 2. Powinieneś zobaczyć interfejs noVNC
 3. Kliknij "Connect" i wprowadź hasło
 4. Powinieneś zobaczyć desktop XFCE4
-5. Otwórz terminal i uruchom dyad: `cd /opt/dyad && npm start`
+5. **dyad automatycznie uruchomi się w Firefox!**
+6. Zacznij budować aplikacje bezpośrednio w przeglądarce!
