@@ -1,4 +1,4 @@
-FROM alpine/gcloud:310.0.0
+FROM alpine/node
 
 # Instalacja podstawowych pakietów i środowiska graficznego
 RUN apk update && apk add --no-cache \
