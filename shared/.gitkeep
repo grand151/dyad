@@ -1,0 +1,2 @@
+# Ten plik służy do śledzenia katalogu shared przez git
+# Katalog shared jest używany do wymiany plików między hostem a kontenerem
