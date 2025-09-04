@@ -46,8 +46,7 @@ RUN chmod +x /start.sh
 # Instalacja dyad
 RUN git clone https://github.com/dyad-sh/dyad.git /opt/dyad \
     && cd /opt/dyad \
-    && npm install \
-    && npm run build
+    && npm install
 
 # Skrypt dla automatycznego uruchamiania dyad
 COPY start-dyad.sh /opt/start-dyad.sh
