@@ -116,7 +116,7 @@ class WebFileSystemAdapter implements FileSystemAdapter {
     await writable.close();
   }
 
-  async deleteFile(path: string): Promise<void> {
+  async deleteFile(_path: string): Promise<void> {
     // File System Access API doesn't support delete directly
     // Need to remove from parent directory
     throw new Error("Delete not implemented in File System Access API");
@@ -139,11 +139,11 @@ class WebFileSystemAdapter implements FileSystemAdapter {
     return entries;
   }
 
-  async createDir(path: string): Promise<void> {
+  async createDir(_path: string): Promise<void> {
     throw new Error("Create directory not implemented in File System Access API");
   }
 
-  async deleteDir(path: string): Promise<void> {
+  async deleteDir(_path: string): Promise<void> {
     throw new Error("Delete directory not implemented in File System Access API");
   }
 
@@ -160,7 +160,7 @@ class WebFileSystemAdapter implements FileSystemAdapter {
         name: handle.name,
         path,
       };
-    } catch (error) {
+    } catch {
       // User cancelled
       return null;
     }
@@ -177,7 +177,7 @@ class WebFileSystemAdapter implements FileSystemAdapter {
         name: handle.name,
         path,
       };
-    } catch (error) {
+    } catch {
       // User cancelled
       return null;
     }
@@ -196,7 +196,7 @@ class WebFileSystemAdapter implements FileSystemAdapter {
         name: handle.name,
         path,
       };
-    } catch (error) {
+    } catch {
       // User cancelled
       return null;
     }

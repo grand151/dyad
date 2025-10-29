@@ -92,7 +92,7 @@ class WebDatabaseAdapter implements DatabaseAdapter {
     });
   }
 
-  async query<T = any>(sql: string, params?: any[]): Promise<T[]> {
+  async query<T = any>(sql: string, _params?: any[]): Promise<T[]> {
     // Simple SQL parsing for IndexedDB
     // This is a simplified implementation - in production, use a proper SQL-to-IndexedDB library
     const storeName = this.parseTableName(sql);

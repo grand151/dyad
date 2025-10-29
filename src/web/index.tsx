@@ -11,7 +11,7 @@ import {
   QueryClientProvider,
   MutationCache,
 } from "@tanstack/react-query";
-import { showError, showMcpConsentToast } from "../lib/toast";
+import { showError } from "../lib/toast";
 import { initializeServiceWorker } from "./service-worker";
 import { isWeb } from "../lib/platform";
 

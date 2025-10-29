@@ -5,6 +5,7 @@ This document describes the web platform port of Dyad with Progressive Web App (
 ## Overview
 
 Dyad has been ported to run as a web application with PWA capabilities, allowing it to be:
+
 - Accessed from any modern web browser
 - Installed as a standalone app on desktop and mobile devices
 - Used offline with cached resources
@@ -15,12 +16,14 @@ Dyad has been ported to run as a web application with PWA capabilities, allowing
 The web version maintains a similar architecture to the Electron app but adapts to web constraints:
 
 ### Frontend (React)
+
 - Same React UI components as desktop version
 - Platform detection layer (`src/lib/platform.ts`)
 - Adapter layers for IPC, FileSystem, and Database
 - Service Worker for offline capability and caching
 
 ### Backend (Node.js/Express)
+
 - REST API replacing Electron IPC handlers
 - WebSocket support for real-time communication
 - Session-based authentication
@@ -29,24 +32,26 @@ The web version maintains a similar architecture to the Electron app but adapts 
 
 ### Key Differences from Desktop
 
-| Feature | Desktop (Electron) | Web (PWA) |
-|---------|-------------------|-----------|
-| IPC | Native Electron IPC | REST API + WebSocket |
-| File System | Node.js fs module | File System Access API / Virtual FS |
-| Database | SQLite (better-sqlite3) | IndexedDB / PostgreSQL |
-| Updates | Auto-updater | Service Worker updates |
-| Installation | Platform installers | PWA install prompt |
+| Feature      | Desktop (Electron)      | Web (PWA)                           |
+| ------------ | ----------------------- | ----------------------------------- |
+| IPC          | Native Electron IPC     | REST API + WebSocket                |
+| File System  | Node.js fs module       | File System Access API / Virtual FS |
+| Database     | SQLite (better-sqlite3) | IndexedDB / PostgreSQL              |
+| Updates      | Auto-updater            | Service Worker updates              |
+| Installation | Platform installers     | PWA install prompt                  |
 
 ## Quick Start
 
 ### Development
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Start development servers:**
+
    ```bash
    # Terminal 1: Backend server
    npm run server:dev
@@ -90,16 +95,19 @@ docker-compose -f docker-compose.web.yml up -d
 The web version uses adapter layers to abstract platform differences:
 
 #### IPC Adapter (`src/adapters/ipc-adapter.ts`)
+
 - Automatically routes between Electron IPC and HTTP API
 - Supports both invoke (request/response) and send (fire and forget)
 - WebSocket support for real-time events
 
 #### FileSystem Adapter (`src/adapters/filesystem-adapter.ts`)
+
 - **Electron**: Native Node.js fs module
 - **Modern Browsers**: File System Access API
 - **Fallback**: Virtual in-memory file system
 
 #### Database Adapter (`src/adapters/database-adapter.ts`)
+
 - **Electron**: SQLite with better-sqlite3
 - **Web**: IndexedDB for client-side storage
 - **Server**: PostgreSQL/MySQL for server-side storage
@@ -136,6 +144,7 @@ docker-compose -f docker-compose.web.yml up -d
 ```
 
 Includes:
+
 - Dyad web app
 - PostgreSQL database
 - Nginx reverse proxy
@@ -143,16 +152,19 @@ Includes:
 ### 2. Cloud Platforms
 
 #### Vercel
+
 ```bash
 vercel --prod
 ```
 
 #### Netlify
+
 ```bash
 netlify deploy --prod
 ```
 
 #### Railway / Render / Fly.io
+
 See `docs/deployment-web.md` for detailed guides.
 
 ### 3. Traditional VPS
@@ -181,12 +193,14 @@ The web server exposes these endpoints:
 ## Browser Support
 
 ### Minimum Requirements
+
 - Chrome 90+
 - Edge 90+
 - Firefox 88+
 - Safari 14+
 
 ### Recommended Features
+
 - File System Access API (Chrome 86+, Edge 86+)
 - Service Workers (all modern browsers)
 - IndexedDB (all modern browsers)
@@ -236,12 +250,13 @@ When adding features that work on both platforms:
 3. Test on both platforms
 
 Example:
+
 ```typescript
-import { isElectron } from '@/lib/platform';
-import { ipcClient } from '@/adapters/ipc-adapter';
+import { isElectron } from "@/lib/platform";
+import { ipcClient } from "@/adapters/ipc-adapter";
 
 // Works on both platforms
-const result = await ipcClient.invoke('some-method', data);
+const result = await ipcClient.invoke("some-method", data);
 ```
 
 ## Security
@@ -262,6 +277,7 @@ The app includes a strict CSP. Modify in `src/server/index.ts` if needed.
 ## Monitoring
 
 Recommended monitoring setup:
+
 - **Application**: Sentry for error tracking
 - **Performance**: Lighthouse CI for PWA metrics
 - **Uptime**: UptimeRobot or similar
@@ -280,16 +296,19 @@ When contributing to the web platform:
 ## Troubleshooting
 
 ### Service Worker Not Registering
+
 - Check browser console for errors
 - Ensure HTTPS (required for SW except localhost)
 - Clear browser cache and reload
 
 ### File System Access Not Working
+
 - Only works in Chrome/Edge 86+
 - User must grant permissions
 - Falls back to virtual FS in other browsers
 
 ### WebSocket Connection Issues
+
 - Check firewall rules
 - Verify proxy configuration for WS upgrade
 - Check CORS settings

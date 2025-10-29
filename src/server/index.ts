@@ -117,7 +117,7 @@ wss.on("connection", (ws, req) => {
 /**
  * Handle IPC method calls from web clients
  */
-async function handleIpcMethod(method: string, data: any, req: Request): Promise<any> {
+async function handleIpcMethod(method: string, data: any, _req: Request): Promise<any> {
   console.log(`IPC method called: ${method}`);
 
   // Route to appropriate handler based on method name
@@ -164,52 +164,52 @@ async function handleIpcMethod(method: string, data: any, req: Request): Promise
 }
 
 // Placeholder handlers (implement actual logic)
-async function handleDbQuery(data: any) {
+async function handleDbQuery(_data: any) {
   // TODO: Implement database query logic
   return [];
 }
 
-async function handleDbExecute(data: any) {
+async function handleDbExecute(_data: any) {
   // TODO: Implement database execute logic
   return { success: true };
 }
 
-async function handleDbGet(data: any) {
+async function handleDbGet(_data: any) {
   // TODO: Implement database get logic
   return null;
 }
 
-async function handleReadFile(data: any) {
+async function handleReadFile(_data: any) {
   // TODO: Implement file read logic
   throw new Error("File operations require server-side storage setup");
 }
 
-async function handleWriteFile(data: any) {
+async function handleWriteFile(_data: any) {
   // TODO: Implement file write logic
   throw new Error("File operations require server-side storage setup");
 }
 
-async function handleDeleteFile(data: any) {
+async function handleDeleteFile(_data: any) {
   // TODO: Implement file delete logic
   throw new Error("File operations require server-side storage setup");
 }
 
-async function handleExists(data: any) {
+async function handleExists(_data: any) {
   // TODO: Implement file exists check
   return false;
 }
 
-async function handleReadDir(data: any) {
+async function handleReadDir(_data: any) {
   // TODO: Implement directory read logic
   return [];
 }
 
-async function handleCreateDir(data: any) {
+async function handleCreateDir(_data: any) {
   // TODO: Implement directory create logic
   throw new Error("Directory operations require server-side storage setup");
 }
 
-async function handleDeleteDir(data: any) {
+async function handleDeleteDir(_data: any) {
   // TODO: Implement directory delete logic
   throw new Error("Directory operations require server-side storage setup");
 }

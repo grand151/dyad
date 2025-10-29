@@ -150,6 +150,7 @@ See `.env.web.example` for all available configuration options.
 ## Monitoring
 
 Consider adding monitoring tools:
+
 - Application: PM2, New Relic, or Sentry
 - Infrastructure: Prometheus, Grafana
 - Logs: ELK Stack or CloudWatch
@@ -157,6 +158,7 @@ Consider adding monitoring tools:
 ## Scaling
 
 For high traffic:
+
 1. Use load balancer (Nginx, HAProxy)
 2. Scale horizontally with multiple instances
 3. Use Redis for session storage
@@ -166,6 +168,7 @@ For high traffic:
 ## Troubleshooting
 
 ### Port already in use
+
 ```bash
 # Find process using port 8080
 lsof -i :8080
@@ -174,11 +177,13 @@ kill -9 <PID>
 ```
 
 ### WebSocket connection issues
+
 - Check firewall rules
 - Verify proxy configuration for WebSocket upgrade
 - Check CORS settings
 
 ### Database connection errors
+
 - Verify DATABASE_URL
 - Check database server is running
 - Verify credentials and permissions
