@@ -1,0 +1,29 @@
+{
+  "name": "dyad-server",
+  "version": "0.26.0-beta.1",
+  "description": "Dyad Web Platform Backend Server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server/index.ts",
+    "build": "tsc -p src/server/tsconfig.json",
+    "start": "node dist-server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "express-session": "^1.18.1",
+    "ws": "^8.18.0",
+    "helmet": "^8.0.0",
+    "compression": "^1.7.5",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express-session": "^1.18.0",
+    "@types/ws": "^8.5.13",
+    "@types/compression": "^1.7.5",
+    "tsx": "^4.19.2"
+  }
+}

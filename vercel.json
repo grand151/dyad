@@ -1,0 +1,52 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "name": "dyad-web",
+  "builds": [
+    {
+      "src": "src/server/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist-web/**"]
+      }
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist-web"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/src/server/index.ts"
+    },
+    {
+      "src": "/ws/(.*)",
+      "dest": "/src/server/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist-web/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "SESSION_SECRET": "@session-secret",
+    "DATABASE_URL": "@database-url"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "regions": ["iad1"],
+  "functions": {
+    "src/server/index.ts": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  }
+}
